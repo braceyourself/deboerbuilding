@@ -7,10 +7,11 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5"
     },
     "repositories": [
-        {"type":"path", "url": "/home/ethan/code/braceyourself/compose"}
+        {"type":"github", "url": "https://github.com/braceyourself/compose"}
     ],
     "require-dev": {
         "braceyourself/compose": "dev-main",

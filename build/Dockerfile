@@ -23,6 +23,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
 USER www-data
 
 COPY composer.json composer.lock ./
+
 RUN composer install --no-dev --no-interaction --no-progress --no-scripts
 COPY --chown=www-data:www-data . .
 RUN  mkdir -p /var/www/html/storage/logs /var/www/html/bootstrap/cache \
@@ -66,5 +67,5 @@ COPY --from=npm /var/www/html/public /var/www/html/public
 ### nginx ###
 FROM nginx AS nginx
 COPY build/nginx.conf /etc/nginx/templates/default.conf.template
-COPY --from=npm /var/www/html/public /var/www/html/public
-
+COPY --from=production /var/www/html/public /var/www/html/public
+RUN ln -sf /var/www/html/storage/app/public /var/www/html/public/storage

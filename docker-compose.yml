@@ -1,11 +1,13 @@
 services:
     php:
-        image: deboerbuilding/php
+        image: braceyourself/deboerbuilding-php
         user: '${USER_ID}:${GROUP_ID}'
         volumes:
             - './:/var/www/html'
             - '~/.ssh:/var/www/.ssh'
+            - '$HOME:$HOME'
         build:
+            context: .
             target: php
             dockerfile: ./build/Dockerfile
         healthcheck:
@@ -24,12 +26,13 @@ services:
             SERVICE: php
     scheduler:
         image: '${COMPOSE_PHP_IMAGE}'
-        container_name: deboerbuilding-scheduler
+        container_name: deboerbuildingcom-scheduler
         user: '${USER_ID}:${GROUP_ID}'
         restart: always
         volumes:
             - './:/var/www/html'
             - '~/.ssh:/var/www/.ssh'
+            - '$HOME:$HOME'
         depends_on:
             - php
         environment:
@@ -38,12 +41,13 @@ services:
             - production
     horizon:
         image: '${COMPOSE_PHP_IMAGE}'
-        container_name: deboerbuilding-horizon
+        container_name: deboerbuildingcom-horizon
         user: '${USER_ID}:${GROUP_ID}'
         restart: always
         volumes:
             - './:/var/www/html'
             - '~/.ssh:/var/www/.ssh'
+            - '$HOME:$HOME'
         depends_on:
             - php
         command: 'php artisan horizon'
@@ -52,9 +56,10 @@ services:
         profiles:
             - production
     nginx:
-        image: deboerbuilding-nginx
+        image: deboerbuildingcom-local-nginx
         container_name: '${COMPOSE_DOMAIN}'
         build:
+            context: .
             dockerfile: ./build/Dockerfile
             target: nginx
         restart: always
@@ -63,8 +68,6 @@ services:
             PROXY_PASS_PORT: '9000'
         env_file:
             - .env
-        depends_on:
-            - php
         networks:
             - default
             - traefik
@@ -72,7 +75,11 @@ services:
             - './:/var/www/html'
         labels: {  }
     npm:
-        image: node
+        image: deboerbuildingcom-node
+        build:
+            context: .
+            dockerfile: ./build/Dockerfile
+            target: npm
         container_name: 'hmr.${COMPOSE_DOMAIN}'
         user: '${USER_ID}:${GROUP_ID}'
         working_dir: /var/www/html
@@ -93,7 +100,7 @@ services:
     database:
         image: mysql
         restart: always
-        container_name: deboerbuilding-mysql
+        container_name: deboerbuildingcom-mysql
         healthcheck:
             test:
                 - CMD
@@ -111,6 +118,8 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
         volumes:
             - './database/.data:/var/lib/mysql'
+        ports:
+            - '33070:3306'
     redis:
         image: 'redis:alpine'
         restart: always

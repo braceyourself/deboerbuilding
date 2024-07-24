@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "811c3532a9357dc05f9505487f3ec0e1",
+    "content-hash": "cad3a558bf0d53a252b317b20347df59",
     "packages": [
         {
             "name": "brick/math",
@@ -1815,6 +1815,82 @@
                 }
             ],
             "time": "2024-01-28T23:22:08+00:00"
+        },
+        {
+            "name": "livewire/livewire",
+            "version": "v3.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "b158c6386a892efc6c5e4682e682829baac1f933"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/b158c6386a892efc6c5e4682e682829baac1f933",
+                "reference": "b158c6386a892efc6c5e4682e682829baac1f933",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^10.0|^11.0",
+                "illuminate/routing": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "illuminate/validation": "^10.0|^11.0",
+                "league/mime-type-detection": "^1.9",
+                "php": "^8.1",
+                "symfony/console": "^6.0|^7.0",
+                "symfony/http-kernel": "^6.2|^7.0"
+            },
+            "require-dev": {
+                "calebporzio/sushi": "^2.1",
+                "laravel/framework": "^10.15.0|^11.0",
+                "laravel/prompts": "^0.1.6",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^8.21.0|^9.0",
+                "orchestra/testbench-dusk": "^8.24|^9.1",
+                "phpunit/phpunit": "^10.4",
+                "psy/psysh": "^0.11.22|^0.12"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "support": {
+                "issues": "https://github.com/livewire/livewire/issues",
+                "source": "https://github.com/livewire/livewire/tree/v3.5.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/livewire",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-07-15T18:27:32+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5682,10 +5758,16 @@
         {
             "name": "braceyourself/compose",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/braceyourself/compose.git",
+                "reference": "77a05054d13ba226e641f1d0f5b5d4f9fb5bb7c4"
+            },
             "dist": {
-                "type": "path",
-                "url": "/home/ethan/code/braceyourself/compose",
-                "reference": "0d4e32ac5e5e2ab2b2646b07dafd85ade66d8e0c"
+                "type": "zip",
+                "url": "https://api.github.com/repos/braceyourself/compose/zipball/77a05054d13ba226e641f1d0f5b5d4f9fb5bb7c4",
+                "reference": "77a05054d13ba226e641f1d0f5b5d4f9fb5bb7c4",
+                "shasum": ""
             },
             "require": {
                 "illuminate/console": "^10|^11",
@@ -5697,6 +5779,7 @@
                 "orchestra/testbench": "^9.1",
                 "phpunit/phpunit": "^11.2"
             },
+            "default-branch": true,
             "bin": [
                 "bin/compose"
             ],
@@ -5728,9 +5811,11 @@
                 }
             ],
             "description": "Initialize your application using docker and docker compose",
-            "transport-options": {
-                "relative": false
-            }
+            "support": {
+                "source": "https://github.com/braceyourself/compose/tree/main",
+                "issues": "https://github.com/braceyourself/compose/issues"
+            },
+            "time": "2024-07-24T15:39:07+00:00"
         },
         {
             "name": "fakerphp/faker",
