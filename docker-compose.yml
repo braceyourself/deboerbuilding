@@ -1,0 +1,142 @@
+services:
+    php:
+        image: braceyourself/deboerbuilding-php
+        user: '${USER_ID}:${GROUP_ID}'
+        volumes:
+            - './:/var/www/html'
+            - '~/.ssh:/var/www/.ssh'
+            - '$HOME:$HOME'
+        build:
+            context: .
+            target: php
+            dockerfile: ./build/Dockerfile
+        healthcheck:
+            test:
+                - CMD
+                - php
+                - '-v'
+            interval: 5s
+            timeout: 10s
+            retries: 5
+        env_file:
+            - .env
+        working_dir: /var/www/html
+        restart: always
+        environment:
+            SERVICE: php
+    scheduler:
+        image: '${COMPOSE_PHP_IMAGE}'
+        container_name: deboerbuildingcom-scheduler
+        user: '${USER_ID}:${GROUP_ID}'
+        restart: always
+        volumes:
+            - './:/var/www/html'
+            - '~/.ssh:/var/www/.ssh'
+            - '$HOME:$HOME'
+        depends_on:
+            - php
+        environment:
+            SERVICE: scheduler
+        profiles:
+            - production
+    horizon:
+        image: '${COMPOSE_PHP_IMAGE}'
+        container_name: deboerbuildingcom-horizon
+        user: '${USER_ID}:${GROUP_ID}'
+        restart: always
+        volumes:
+            - './:/var/www/html'
+            - '~/.ssh:/var/www/.ssh'
+            - '$HOME:$HOME'
+        depends_on:
+            - php
+        command: 'php artisan horizon'
+        environment:
+            SERVICE: horizon
+        profiles:
+            - production
+    nginx:
+        image: deboerbuildingcom-local-nginx
+        container_name: '${COMPOSE_DOMAIN}'
+        build:
+            context: .
+            dockerfile: ./build/Dockerfile
+            target: nginx
+        restart: always
+        environment:
+            PROXY_PASS: php
+            PROXY_PASS_PORT: '9000'
+        env_file:
+            - .env
+        networks:
+            - default
+            - traefik
+        volumes:
+            - './:/var/www/html'
+        labels: {  }
+    npm:
+        image: deboerbuildingcom-node
+        build:
+            context: .
+            dockerfile: ./build/Dockerfile
+            target: npm
+        container_name: 'hmr.${COMPOSE_DOMAIN}'
+        user: '${USER_ID}:${GROUP_ID}'
+        working_dir: /var/www/html
+        command: 'npm run dev -- --host --port=80'
+        labels:
+            'traefik.http.services.${COMPOSE_ROUTER}.loadbalancer.server.port': 80
+        env_file:
+            - .env
+        volumes:
+            - './:/var/www/html'
+        depends_on:
+            - php
+        networks:
+            - default
+            - traefik
+        profiles:
+            - local
+    database:
+        image: mysql
+        restart: always
+        container_name: deboerbuildingcom-mysql
+        healthcheck:
+            test:
+                - CMD
+                - mysqladmin
+                - ping
+                - '-h'
+                - localhost
+            interval: 15s
+            timeout: 10s
+            retries: 3
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+        volumes:
+            - './database/.data:/var/lib/mysql'
+        ports:
+            - '33070:3306'
+    redis:
+        image: 'redis:alpine'
+        restart: always
+        profiles:
+            - production
+    mailhog:
+        image: mailhog/mailhog
+        container_name: mailhog.db.localhost
+        restart: always
+        networks:
+            - default
+            - traefik
+        profiles:
+            - local
+        labels:
+            - 'traefik.http.services.mailhog-${COMPOSE_ROUTER}.loadbalancer.server.port=8025'
+networks:
+    traefik:
+        external: true
+        name: '${COMPOSE_NETWORK}'
