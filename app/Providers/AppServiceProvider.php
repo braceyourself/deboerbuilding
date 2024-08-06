@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Stringable;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\Component;
@@ -40,5 +41,10 @@ class AppServiceProvider extends ServiceProvider
         Stringable::macro('filename', function () {
             return str(pathinfo($this->value, PATHINFO_FILENAME));
         });
+
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
+
     }
 }
