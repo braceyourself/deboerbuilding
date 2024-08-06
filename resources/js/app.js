@@ -1,3 +1,6 @@
 import './bootstrap';
 
-console.log('running')
+import.meta.glob([
+    '../images/**',
+    // '../fonts/**',
+]);

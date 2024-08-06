@@ -1,6 +1,6 @@
 services:
     php:
-        image: braceyourself/deboerbuilding-php
+        image: deboerbuilding/php
         user: '${USER_ID}:${GROUP_ID}'
         volumes:
             - './:/var/www/html'
@@ -26,7 +26,7 @@ services:
             SERVICE: php
     scheduler:
         image: '${COMPOSE_PHP_IMAGE}'
-        container_name: deboerbuildingcom-scheduler
+        container_name: deboerbuilding-scheduler
         user: '${USER_ID}:${GROUP_ID}'
         restart: always
         volumes:
@@ -41,7 +41,7 @@ services:
             - production
     horizon:
         image: '${COMPOSE_PHP_IMAGE}'
-        container_name: deboerbuildingcom-horizon
+        container_name: deboerbuilding-horizon
         user: '${USER_ID}:${GROUP_ID}'
         restart: always
         volumes:
@@ -56,7 +56,7 @@ services:
         profiles:
             - production
     nginx:
-        image: deboerbuildingcom-local-nginx
+        image: deboerbuilding-local-nginx
         container_name: '${COMPOSE_DOMAIN}'
         build:
             context: .
@@ -75,7 +75,7 @@ services:
             - './:/var/www/html'
         labels: {  }
     npm:
-        image: deboerbuildingcom-node
+        image: deboerbuilding-node
         build:
             context: .
             dockerfile: ./build/Dockerfile
@@ -100,7 +100,7 @@ services:
     database:
         image: mysql
         restart: always
-        container_name: deboerbuildingcom-mysql
+        container_name: deboerbuilding-mysql
         healthcheck:
             test:
                 - CMD
@@ -119,7 +119,7 @@ services:
         volumes:
             - './database/.data:/var/lib/mysql'
         ports:
-            - '33070:3306'
+            - '33071:3306'
     redis:
         image: 'redis:alpine'
         restart: always
