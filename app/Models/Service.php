@@ -31,7 +31,7 @@ class Service extends Model
     {
         return Attribute::get(function () {
             $image = $this->image;
-            $curations = collect($image->curations)->collapse();
+            $curations = collect($image?->curations)->collapse();
 
             if ($curations->isNotEmpty()) {
                 $c = $curations->firstWhere('key', 'focused');
