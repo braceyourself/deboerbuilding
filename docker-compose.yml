@@ -1,6 +1,6 @@
 services:
     php:
-        image: deboerbuilding/php
+        image: ethanabrace/deboerbuilding-php
         user: '${USER_ID}:${GROUP_ID}'
         volumes:
             - './:/var/www/html'
