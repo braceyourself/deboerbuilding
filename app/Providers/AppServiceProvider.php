@@ -18,13 +18,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Component::macro('saveOnUpdate', function () {
             $this->live()->afterStateUpdated(function ($state, $record, Component $component) {
-                $notification = Notification::make()->title('Saved')->success();
+                if ($record?->exists()) {
+                    $notification = Notification::make()->title('Saved')->success();
 
-                $record->update([
-                    $component->statePath => $state
-                ]);
+                    $record->update([
+                        $component->statePath => $state
+                    ]);
 
-                $notification->send();
+                    $notification->send();
+                }
             });
 
             return $this;

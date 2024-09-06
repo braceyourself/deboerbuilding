@@ -9,13 +9,14 @@ export default {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: '#d49d48',
+                    DEFAULT: '#C8A457',
+                    // DEFAULT: '#d49d48',
                     50: '#fffaf0',
                     100: '#fef5e7',
                     200: '#fecb89',
                     300: '#f9a825',
                     400: '#f59e0b',
-                    500: '#d49d48',
+                    500: '#C8A457',
                     600: '#b07d2b',
                     700: '#7e5e2e',
                     800: '#5a4b29',
