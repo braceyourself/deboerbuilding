@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\Stringable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\Component;
@@ -38,6 +40,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        DB::listen(function($query) {
+            Log::info(
+                $query->sql,
+                [
+                    'bindings' => $query->bindings,
+                    'time' => $query->time
+                ]
+            );
+        });
+
         Model::unguard();
 
         Stringable::macro('filename', function () {

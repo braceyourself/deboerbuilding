@@ -30,6 +30,8 @@ class TestimonialResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('order')
+            ->defaultSort('order')
             ->columns([
                 Tables\Columns\TextColumn::make('client.name')->width('50px'),
                 Tables\Columns\TextColumn::make('content')->limit(70),
