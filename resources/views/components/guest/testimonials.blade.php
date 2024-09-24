@@ -4,11 +4,7 @@
     </h2>
     <div class="container mt-8 flex flex-col gap-20 space-y-6 font-bold text-lg m-auto">
         @php
-            $list = \App\Models\Testimonial::limit(3)->get()->map(function($t, $k){
-                $t->image_position = $k % 2 == 0 ? 'left' : 'right';
-
-                return $t;;
-            });
+            $list = \App\Models\Testimonial::limit(3)->get();
         @endphp
 
         <x-testimonial :testimonial="$list->get(0)"
