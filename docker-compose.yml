@@ -67,7 +67,7 @@ services:
         profiles:
             - local
     database:
-        image: mysql
+        image: 'mysql:8.3'
         restart: always
         container_name: deboerbuilding-mysql
         healthcheck:
