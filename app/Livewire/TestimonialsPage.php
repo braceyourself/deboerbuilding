@@ -11,12 +11,6 @@ class TestimonialsPage extends Component
 {
     public $onPage = 5;
 
-    public function mount()
-    {
-        // enable query logs
-
-    }
-
     #[Computed]
     public function records()
     {

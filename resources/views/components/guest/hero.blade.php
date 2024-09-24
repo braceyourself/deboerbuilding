@@ -23,7 +23,7 @@
             <h1 class="text-5xl font-bold" style="text-shadow: 3px 0 7px black;">Transforming Your Home into Your Dream
                 Space</h1>
             <p class="mt-4 text-lg">Specializing in custom home remodeling</p>
-            <a href="#contact"
+            <a href="/contact"
                class="mt-6 inline-block bg-primary text-white py-3 px-6 rounded-xl hover:bg-primary-400 font-bold text-xl">
                 Request a Free Quote
             </a>

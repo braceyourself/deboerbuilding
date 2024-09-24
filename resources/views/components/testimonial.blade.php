@@ -6,7 +6,7 @@
 @php /** @var App\Models\Testimonial $testimonial **/ @endphp
 
 <div @class([
-         "flex flex-col lg:flex-row gap-10 justify-center m-auto",
+         "flex flex-col lg:flex-row justify-center m-auto",
          "lg:flex-row-reverse" => $imagePosition === 'right',
 ])>
 
@@ -16,7 +16,7 @@
             {!! $image !!}
         </div>
     @else
-        <div class="relative block w-[300px] m-auto">
+        <div class="relative block w-[300px]">
             <img class="lg:absolute top-0" src="{{ $image }}" alt="">
         </div>
     @endif

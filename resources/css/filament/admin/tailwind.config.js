@@ -5,6 +5,8 @@ export default {
     presets: [preset],
     content: [
         './app/Filament/**/*.php',
+        './app/Filament/Resources/**/*.php',
+        './app/Filament/Resources/**/Pages/*.php',
         './resources/views/filament/**/*.blade.php',
         './resources/views/vendor/filament-kanban/**/*.blade.php',
         './vendor/filament/**/*.blade.php',

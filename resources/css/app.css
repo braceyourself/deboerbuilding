@@ -2,6 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+html {
     font-variant-caps: petite-caps;
+    font-size: 20px;
 }
+
+.text-md {
+    font-size: 1.125rem;
+}
+
+.text-lg {
+    font-size: 1.25rem;
+}
+
+.text-xl {
+    font-size: 1.5rem;
+}
+
+.text-2xl {
+    font-size: 1.875rem;
+}
+
+.text-3xl {
+    font-size: 2.25rem;
+}
+
+.text-4xl {
+    font-size: 3rem;
+}
+
+.text-5xl {
+    font-size: 3.75rem;
+}
+
+.text-6xl {
+    font-size: 4.5rem;
+}
+
+.text-7xl {
+    font-size: 5.5rem;
+}
+
+.text-8xl {
+    font-size: 6.5rem;
+}
+
+.text-9xl {
+    font-size: 8rem;
+}
+
+.fi-modal-window{
+    font-variant-caps: initial;
+}
+
+/*.fi-modal-close-overlay{*/
+/*    background-color: rgba(0, 0, 0, 0.5);*/
+/*}*/
+
+.image-with-border{
+    @apply rounded-xl lg:border border-primary;
+    @apply shadow-2xl
+
+}
+

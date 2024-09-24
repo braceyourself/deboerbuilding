@@ -11,6 +11,7 @@
         "php": "^8.2",
         "awcodes/filament-curator": "^3.6",
         "filament/filament": "^3.2",
+        "laragear/cache-query": "^4.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
@@ -23,6 +24,7 @@
         }
     ],
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.1",
         "braceyourself/compose": "dev-main",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
