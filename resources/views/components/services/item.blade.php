@@ -32,7 +32,7 @@
         </div>
 
         <a href="/contact?comment=i'd like a quote for {{ $service->name }}" @class([
-            'w-fit bg-primary text-white py-3 px-6 rounded-xl hover:bg-primary-400 font-bold sm:mx-auto md:mx-0 my-10',
+            'w-fit bg-primary text-white py-3 px-6 rounded-xl hover:bg-primary-400 font-bold sm:mx-auto md:mx-0 my-10 mb-0',
             'md:ml-auto' => !$odd,
             'md:mr-auto' => $odd,
 
