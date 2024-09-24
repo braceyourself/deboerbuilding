@@ -49,6 +49,7 @@ return [
         'nginx'     => [],
         'npm'       => [],
         'database'     => [
+            'image' => 'mysql:8.3',
             'expose_on_port' => env('COMPOSE_DB_PORT'),
         ],
         'redis'     => false,

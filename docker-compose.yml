@@ -24,37 +24,6 @@ services:
         restart: always
         environment:
             SERVICE: php
-    scheduler:
-        image: '${COMPOSE_PHP_IMAGE}'
-        container_name: deboerbuilding-scheduler
-        user: '${USER_ID}:${GROUP_ID}'
-        restart: always
-        volumes:
-            - './:/var/www/html'
-            - '~/.ssh:/var/www/.ssh'
-            - '$HOME:$HOME'
-        depends_on:
-            - php
-        environment:
-            SERVICE: scheduler
-        profiles:
-            - production
-    horizon:
-        image: '${COMPOSE_PHP_IMAGE}'
-        container_name: deboerbuilding-horizon
-        user: '${USER_ID}:${GROUP_ID}'
-        restart: always
-        volumes:
-            - './:/var/www/html'
-            - '~/.ssh:/var/www/.ssh'
-            - '$HOME:$HOME'
-        depends_on:
-            - php
-        command: 'php artisan horizon'
-        environment:
-            SERVICE: horizon
-        profiles:
-            - production
     nginx:
         image: deboerbuilding-local-nginx
         container_name: '${COMPOSE_DOMAIN}'
@@ -120,11 +89,6 @@ services:
             - './database/.data:/var/lib/mysql'
         ports:
             - '33071:3306'
-    redis:
-        image: 'redis:alpine'
-        restart: always
-        profiles:
-            - production
     mailhog:
         image: mailhog/mailhog
         container_name: mailhog.db.localhost
