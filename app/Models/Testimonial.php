@@ -12,6 +12,8 @@ class Testimonial extends Model implements Sortable
     use HasFactory;
     use SortableTrait;
 
+    public $order_column_name = 'order';
+
     public function client()
     {
         return $this->belongsTo(Client::class);
