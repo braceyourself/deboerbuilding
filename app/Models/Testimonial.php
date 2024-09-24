@@ -12,7 +12,10 @@ class Testimonial extends Model implements Sortable
     use HasFactory;
     use SortableTrait;
 
-    public $order_column_name = 'order';
+    public $sortable = [
+        'order_column_name' => 'order',
+        'sort_when_creating' => true,
+    ];
 
     public function client()
     {
