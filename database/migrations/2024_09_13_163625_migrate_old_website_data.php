@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Client;
 use App\Models\Employee;
 use App\Models\PageContent;
 use App\Models\Testimonial;
@@ -212,17 +213,82 @@ return new class extends Migration
         ]);
 
         Testimonial::query()->delete();
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (1, 3, 'The entire team (Dave particularly) was responsive to us. We particularly appreciate the care you all showed in cleaning up at the end of the day. All subs reflected the values of DeBoer Building.', '2024-09-06 17:38:58', '2024-09-06 17:47:28', 3);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (2, 4, 'Ben was very straightforward and made me feel at ease/like I was being treated fairly. All work was exceptional. DeBoer guys were awesome, very kind and easy going, and accomododating with our animals. DeBoer is phenomenal, we love everything!', '2024-09-06 17:38:58', '2024-09-06 17:47:28', 4);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (3, 5, 'DeBoer Building had transparency in costs, high quality work, great communication, willingness to find solutions within our budget. The whole team was great. My husband, Matt, reached out to Dave a lot with questions & he was always responsive & helpful! Thanks for another great remodel!', '2024-09-06 17:38:58', '2024-09-06 17:47:28', 1);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (4, 6, 'We really appreciate the great work and couldn''t be more please with how it (the kitchen) turned out!', '2024-09-06 17:38:58', '2024-09-06 17:47:28', 2);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (5, 7, 'We chose DeBoer Building because of prior experience - we trust your team to do the work, timely and completely. You do great work! DeBoer Building is our first call for any new project!', '2024-09-06 17:38:59', '2024-09-06 17:47:28', 5);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (6, 8, 'Thanks for a great job! We really like our new bathroom & reveice compliments on it from visitors.', '2024-09-06 17:38:59', '2024-09-06 17:47:28', 6);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (7, 9, 'DeBoer Building had fair pricing, everything was explained well. We had great selection of products and sales people that worked with us to find the best products for us within out budget. All employees were great. Good and timely communication. They listened to our wants & needs.', '2024-09-06 17:38:59', '2024-09-06 17:47:28', 7);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (8, 10, 'Everyone was great! Responsive and detailed information provided. I wouldn''t hesitate to hire DeBoer Building again and recommend to others. Thank you!', '2024-09-06 17:38:59', '2024-09-06 17:47:28', 8);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (9, 11, 'We used DeBoer Building because we just clicked during the initial visit. We knew that the project would be exactly what I wanted. The finished bathroom was exactly as we imagined.', '2024-09-06 17:38:59', '2024-09-06 17:47:28', 9);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (10, 12, 'DeBoer came highly recommended by Godwin Plumbing and Ben made a great first impression. The list of refrences was very impressive. Dave was very responsive & helpful. I really appreciated the ''can do'' attitude to all our questions. We had one issue where the demolition created too much dust for our furnace. The issue was addressed right away.', '2024-09-06 17:38:59', '2024-09-06 17:47:28', 10);");
-        DB::insert("INSERT INTO testimonials (id, client_id, content, created_at, updated_at, `order`) VALUES (11, 13, 'I found DeBoer Building from a recommendation from my neighbor. DeBoer had good communication from staff during the project & I appreciated the follow-up calls from Ben.', '2024-09-06 17:38:59', '2024-09-06 17:47:28', 11);");
+        Testimonial::create([
+            'content'   => "The entire team (Dave particularly) was responsive to us. We particularly appreciate the care you all showed in cleaning up at the end of the day. All subs reflected the values of DeBoer Building.",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Paul K.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "Ben was very straightforward and made me feel at ease/like I was being treated fairly. All work was exceptional. DeBoer guys were awesome, very kind and easy going, and accomododating with our animals. DeBoer is phenomenal, we love everything!",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Meghan M.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "DeBoer Building had transparency in costs, high quality work, great communication, willingness to find solutions within our budget. The whole team was great. My husband, Matt, reached out to Dave a lot with questions & he was always responsive & helpful! Thanks for another great remodel!",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Matt & Caitlin C.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "We really appreciate the great work and couldn't be more please with how it (the kitchen) turned out!",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Tim & Annie B.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "We chose DeBoer Building because of prior experience - we trust your team to do the work, timely and completely. You do great work! DeBoer Building is our first call for any new project!",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Allison M.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "Thanks for a great job! We really like our new bathroom & reveice compliments on it from visitors.",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Bob & Linda P.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "DeBoer Building had fair pricing, everything was explained well. We had great selection of products and sales people that worked with us to find the best products for us within out budget. All employees were great. Good and timely communication. They listened to our wants & needs.",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Nancy B.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "Everyone was great! Responsive and detailed information provided. I wouldn't hesitate to hire DeBoer Building again and recommend to others. Thank you!",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Maria A.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "We used DeBoer Building because we just clicked during the initial visit. We knew that the project would be exactly what I wanted. The finished bathroom was exactly as we imagined.",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Heather L.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "DeBoer came highly recommended by Godwin Plumbing and Ben made a great first impression. The list of refrences was very impressive. Dave was very responsive & helpful. I really appreciated the 'can do' attitude to all our questions. We had one issue where the demolition created too much dust for our furnace. The issue was addressed right away.",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Jim B.'
+            ])->id
+        ]);
+
+        Testimonial::create([
+            'content'   => "I found DeBoer Building from a recommendation from my neighbor. DeBoer had good communication from staff during the project & I appreciated the follow-up calls from Ben.",
+            'client_id' => Client::firstOrCreate([
+                'name' => 'Nancy K.'
+            ])->id
+        ]);
     }
 
     /**
