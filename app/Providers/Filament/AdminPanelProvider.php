@@ -2,11 +2,13 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Register;
 use Awcodes\Curator\CuratorPlugin;
 use Filament\View\PanelsRenderHook;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Support\Facades\Blade;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\AssetResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -35,21 +37,19 @@ class AdminPanelProvider extends PanelProvider
 
     public function panel(Panel $panel): Panel
     {
-        return $panel
+        return $panel->id('admin')
+            ->passwordReset()
+            ->emailVerification()
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->default()
-            ->id('admin')
             ->path('admin')
             ->login()
+            ->registration(Register::class)
             ->maxContentWidth('xxl')
             ->plugins([
                 CuratorPlugin::make()
                     ->navigationCountBadge()
             ])
-//            ->renderHook(
-//                PanelsRenderHook::BODY_END,
-//                fn (): string => Blade::render('<x-curator::modals.modal />'),
-//            )
             ->colors([
                 'primary' => Color::Amber,
             ])

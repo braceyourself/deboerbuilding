@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "049b14cae11d7c9fea52cbcd7b9bfae4",
+    "content-hash": "c385faa8070abbf2758d45ac4a835135",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3378,6 +3378,70 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.9.0"
             },
             "time": "2024-03-31T07:05:07+00:00"
+        },
+        {
+            "name": "mateusjunges/laravel-invite-codes",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mateusjunges/laravel-invite-codes.git",
+                "reference": "af01a24a4fbcbb1f9b2aac123bdcd92577a77e89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mateusjunges/laravel-invite-codes/zipball/af01a24a4fbcbb1f9b2aac123bdcd92577a77e89",
+                "reference": "af01a24a4fbcbb1f9b2aac123bdcd92577a77e89",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^10.0|^11.0",
+                "illuminate/database": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "php": "^8.2|^8.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0|^8.0",
+                "phpunit/phpunit": "^8.0|^9.0",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Junges\\InviteCodes\\InviteCodesServiceProvider",
+                        "Junges\\InviteCodes\\InviteCodesEventServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Junges\\InviteCodes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mateus Junges",
+                    "email": "contato@mateusjunges.com",
+                    "homepage": "https://twitter.com/mateusjungess",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package allows you to easily manage invite codes for your Laravel application.",
+            "support": {
+                "issues": "https://github.com/mateusjunges/laravel-invite-codes/issues",
+                "source": "https://github.com/mateusjunges/laravel-invite-codes/tree/v2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mateusjunges",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-28T22:44:39+00:00"
         },
         {
             "name": "monolog/monolog",
