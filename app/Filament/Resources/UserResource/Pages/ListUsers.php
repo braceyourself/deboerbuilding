@@ -21,7 +21,9 @@ class ListUsers extends ListRecords
                 ->form(fn($form) => UserResource::form($form))
                 ->action(function ($data) {
 
-                    $data['invite-code'] = InviteCodes::create()->save()->code;
+                    $data['invite-code'] = InviteCodes::create()
+                        ->restrictUsageTo($data['email'])
+                        ->save()->code;
 
                     $notification = SimpleNotification::make(function (MailMessage $m) use ($data) {
                         $m->subject('You have been invited to create an account on ' . config('app.name'))
