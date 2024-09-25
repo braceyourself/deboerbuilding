@@ -37,7 +37,9 @@ class Register extends \Filament\Pages\Auth\Register
 
     public function register(): ?RegistrationResponse
     {
-        InviteCodes::redeem($this->form->getState()['invite-code']);
+        Invite::query()
+            ->where('code', $this->form->getState()['invite-code'])
+            ->increment('uses');
 
         try {
             $this->rateLimit(2);

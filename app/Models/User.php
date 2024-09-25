@@ -4,15 +4,20 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Panel;
+use App\Models\Concerns\Invitable;
+use Junges\InviteCodes\Models\Invite;
+use App\Notifications\SimpleNotification;
 use Filament\Models\Contracts\FilamentUser;
+use Junges\InviteCodes\Facades\InviteCodes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Invitable;
 
     /**
      * The attributes that are mass assignable.
@@ -44,7 +49,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
         ];
     }
 

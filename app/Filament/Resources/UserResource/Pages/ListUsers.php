@@ -19,23 +19,7 @@ class ListUsers extends ListRecords
         return [
             Actions\Action::make('invite')
                 ->form(fn($form) => UserResource::form($form))
-                ->action(function ($data) {
-
-                    $data['invite-code'] = InviteCodes::create()
-                        ->restrictUsageTo($data['email'])
-                        ->save()->code;
-
-                    $notification = SimpleNotification::make(function (MailMessage $m) use ($data) {
-                        $m->subject('You have been invited to create an account on ' . config('app.name'))
-                            ->greeting(' ')
-                            ->line("Hello {$data['name']},")
-                            ->line('Click the button below to create an account on ' . config('app.name'))
-                            ->action('Create Account', route('filament.admin.auth.register', $data))
-                            ->salutation(' ');
-                    });
-
-                    (new User($data))->notify($notification);
-                }),
+                ->action(fn($data) => User::invite($data)),
             Actions\CreateAction::make(),
         ];
     }
