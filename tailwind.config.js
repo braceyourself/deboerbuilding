@@ -4,6 +4,7 @@
 export default {
     darkMode: 'class',
     content: [
+        "./node_modules/flowbite/**/*.js",
         './app/Filament/**/*.php',
         './resources/views/filament/**/*.blade.php',
         './resources/**/*.blade.php',
@@ -98,6 +99,8 @@ export default {
             }
         },
     },
-    plugins: [],
+    plugins: [
+        require('flowbite/plugin')
+    ],
 }
 

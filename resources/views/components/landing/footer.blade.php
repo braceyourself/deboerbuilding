@@ -14,7 +14,7 @@
         </div>
 
 
-        <x-guest.contact class="max-w-25" />
+        <x-landing.contact class="max-w-25" />
 
     </div>
 

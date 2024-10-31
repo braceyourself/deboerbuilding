@@ -6,7 +6,7 @@
     <p>Hours: M-F 8am-5pm </p>
     <p class="ml-0 md:ml-10">Office closed on Fridays, but crew works M-F</p>
 {{--    <a href=""--}}
-{{--       class="mt-6 inline-block bg-white text-blue-600 py-3 px-6 rounded-full hover:bg-gray-200">--}}
+{{--       class="mt-6 inline-block bg-white text-blue-600 py-3 px-6 full hover:bg-gray-200">--}}
 {{--        Contact Form--}}
 {{--    </a>--}}
 </section>

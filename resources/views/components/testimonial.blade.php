@@ -1,32 +1,22 @@
+@php /** @var App\Models\Testimonial $testimonial **/ @endphp
+
 @props([
     'testimonial',
     'imagePosition' => 'left',
     'image',
+    'maxHeight' => null
 ])
-@php /** @var App\Models\Testimonial $testimonial **/ @endphp
 
-<div @class([
-         "flex flex-col lg:flex-row justify-center m-auto",
-         "lg:flex-row-reverse" => $imagePosition === 'right',
-])>
+<div {{ $attributes->merge(['class'=> "flex flex-col justify-between bg-white p-6 rounded shadow w-auto text-md md:text-lg min-w-fit"]) }} >
 
-{{--
-    @isset($image)
-    @if($image instanceof \Illuminate\View\ComponentSlot)
-        <div {{ $image->attributes->merge(['class' => 'relative block']) }}>
-            {!! $image !!}
-        </div>
-    @else
-        <div class="flex flex-col mx-10 w-[400px] justify-center">
-            <img class="" src="{{ $image }}" alt="">
-        </div>
-    @endif
-    @endisset
---}}
+    <p @class([
+        "text-gray-600",
+    ]) @style([
+        'max-height' => $maxHeight,
+        'overflow' => 'hidden',
+    ])>"{!! $testimonial->content !!}"</p>
 
-    <x-testimonial-card
-            :content="$testimonial->content"
-            :client-name="$testimonial->client->name"
-    />
+    <p class="text-right mt-2 text-gray-800 text-2xl font-semibold">- {{ $testimonial->client->name }}</p>
 
 </div>
+

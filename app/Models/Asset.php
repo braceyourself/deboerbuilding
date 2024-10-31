@@ -25,6 +25,6 @@ class Asset extends Media
 
     public function scopeHeroImages(Builder $query): Builder
     {
-        return $query->where('description', 'like', '%hero%');
+        return $query->where('hero', true);
     }
 }

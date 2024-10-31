@@ -60,8 +60,7 @@ html {
 /*}*/
 
 .image-with-border{
-    @apply rounded-xl lg:border border-primary;
+    @apply rounded border border-primary;
     @apply shadow-2xl
-
 }
 

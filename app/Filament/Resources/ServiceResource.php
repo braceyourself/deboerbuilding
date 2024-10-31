@@ -43,18 +43,36 @@ class ServiceResource extends Resource
                 Forms\Components\RichEditor::make('description')->columnSpanFull(),
                 Forms\Components\RichEditor::make('short_description')->columnSpanFull(),
 //                Forms\Components\FileUpload::make('image')->image()->columnSpanFull()
+                CuratorPicker::make('images')
+                    ->buttonLabel('Attach Images')
+                    ->relationship('images', 'name')
+                    ->multiple(),
+
             ])->columnSpan(2)->columns(2),
 
             Forms\Components\Section::make([
-                Forms\Components\Toggle::make('enabled')->saveOnUpdate(),
-                Forms\Components\Toggle::make('show_in_footer')
-                    ->disabled(fn($get) => !$get('enabled'))
+                Forms\Components\Toggle::make('enabled')
                     ->saveOnUpdate(),
+
+                Forms\Components\Toggle::make('featured')
+                    ->label('Show on Homepage')
+                    ->visible(fn($get) => $get('enabled'))
+                    ->saveOnUpdate(),
+
+                Forms\Components\Toggle::make('show_in_footer')
+                    ->visible(fn($get) => $get('enabled'))
+                    ->saveOnUpdate(),
+
                 TextInput::make('footer_text')
                     ->disabled(fn($get) => !$get('enabled'))
                     ->placeholder(fn($record) => $record->name)
-                    ->visible(fn($get) => $get('show_in_footer')),
-                CuratorPicker::make('image_id')->relationship('image', 'name')->label('Card Image')->buttonLabel('Attach')
+                    ->visible(fn($get) => $get('show_in_footer') && $get('enabled')),
+
+                CuratorPicker::make('image_id')
+                    ->relationship('image', 'name')
+                    ->label('Card Image')
+                    ->buttonLabel('Attach')
+
             ])->columnSpan(1)
         ]);
     }
@@ -64,6 +82,8 @@ class ServiceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\ToggleColumn::make('featured')->label('Show on Homepage'),
+                Tables\Columns\ToggleColumn::make('footer')->label('Show on Footer'),
                 CuratorColumn::make('image')->size(100)->resolution(1000)
             ])
             ->filters([

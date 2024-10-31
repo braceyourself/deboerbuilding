@@ -1,7 +1,10 @@
 @props([
     'link_class' => null,
 ])
-<nav {{ $attributes->merge(['class' => 'space-x-4 ']) }}>
+@php
+    $link_class = "{$link_class} w-min mx-auto"
+@endphp
+<nav {{ $attributes->merge(['class' => 'px-10 text-center']) }}>
     <a href="/services" class="{{ $link_class }}">Services</a>
     <a href="/about" class="{{ $link_class }}">About</a>
     <a href="/testimonials" class="{{ $link_class }}">Testimonials</a>

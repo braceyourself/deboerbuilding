@@ -48,7 +48,6 @@ class AdminPanelProvider extends PanelProvider
             ->maxContentWidth('xxl')
             ->plugins([
                 CuratorPlugin::make()
-                    ->navigationCountBadge()
             ])
             ->colors([
                 'primary' => Color::Amber,

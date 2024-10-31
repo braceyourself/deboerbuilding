@@ -1,4 +1,4 @@
-<div class="container m-auto py-10 text-lg flex flex-col gap-52">
+<div class="container m-auto p-5 md:p-10 text-lg flex flex-col gap-20">
 
     <div class="flex flex-col-reverse xl:flex-row gap-10 justify-around py-32 lg:px-10">
 
@@ -19,9 +19,9 @@
             </p>
 
             <div class="flex justify-center mt-10">
-                <a href="/contact?comment=i'd like a quote for " class="bg-primary text-white py-3 px-6 rounded-xl hover:bg-primary-400 font-bold text-xl">
+                <x-button href="/contact?comment=i'd like a quote for ">
                     Request a Free Quote
-                </a>
+                </x-button>
             </div>
         </div>
 
@@ -33,16 +33,16 @@
         <p class="text-center mt-4">We offer a wide range of services to help you transform your home into your dream space.</p>
     </div>
 
-    <div class="flex flex-col justify-around gap-48 ">
+    <div class="flex flex-col justify-around gap-20 ">
         @foreach(App\Models\Service::query()->cache()->get() as $k => $service)
-            <x-services.item :service="$service" :key="$k" />
+            <x-services-page.item :service="$service" :key="$k" />
         @endforeach
     </div>
 
     <div class="flex justify-center mt-10">
-        <a href="/contact?comment=i'd like a quote for " class="bg-primary text-white py-3 px-6 rounded-xl hover:bg-primary-400 font-bold text-xl">
+        <x-button href="/contact?comment=i'd like a quote for " >
             Request a Free Quote
-        </a>
+        </x-button>
     </div>
 
 </div>

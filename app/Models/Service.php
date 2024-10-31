@@ -12,12 +12,20 @@ class Service extends Model
 {
     use HasFactory;
 
+    protected $with = ['image'];
+    protected $appends = ['image_url'];
+
     /**********************************************
      * relations
      **********************************************/
     public function image()
     {
         return $this->belongsTo(Media::class);
+    }
+
+    public function images()
+    {
+        return $this->morphMany(MediaItem::class, 'mediable');
     }
 
 

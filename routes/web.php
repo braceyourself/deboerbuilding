@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ServiceController;
 
-Route::view('/', 'welcome');
+Route::view('/', 'landing');
+
 Route::get('testimonials', TestimonialsPage::class)->name('testimonials');
 Route::get('about', AboutPage::class)->name('about');
 Route::get('about/history', HistoryPage::class)->name('history');

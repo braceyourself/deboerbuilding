@@ -18,8 +18,8 @@ class ListUsers extends ListRecords
     {
         return [
             Actions\Action::make('invite')
-                ->form(fn($form) => UserResource::form($form))
-                ->action(fn($data) => User::invite($data)),
+                ->form(UserResource::form(...))
+                ->action(User::invite(...)),
             Actions\CreateAction::make(),
         ];
     }

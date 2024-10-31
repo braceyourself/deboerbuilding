@@ -30,7 +30,7 @@
     <div class="about-page-modals flex flex-col md:flex-row md:justify-center gap-5 m-auto self-center w-full px-10">
 
 {{--        job opportunities--}}
-        <x-filament::modal id="job-opportunities" width="5xl" sticky-footer sticky-header>
+        <x-filament::modal id="job-opportunities" width="5xl" sticky-footer sticky-header class="mt-20">
             <x-slot name="trigger">
                 <x-filament::button class="bg-primary min-w-full">
                     Job Opportunities
@@ -47,7 +47,7 @@
 
 
 {{--        project process--}}
-        <x-filament::modal id="job-opportunities" width="5xl" sticky-footer sticky-header>
+        <x-filament::modal id="job-opportunities" width="5xl" sticky-footer sticky-header class="mt-20">
             <x-slot name="trigger">
                 <x-filament::button class="bg-primary min-w-full">
                     Project Process
@@ -63,7 +63,7 @@
         </x-filament::modal>
 
 {{--        company history--}}
-        <x-filament::modal id="job-opportunities" width="5xl" sticky-footer sticky-header>
+        <x-filament::modal id="job-opportunities" width="5xl" sticky-footer sticky-header class="mt-20">
             <x-slot name="trigger">
                 <x-filament::button class="bg-primary min-w-full">
                     Company History

@@ -3,7 +3,7 @@
     <div x-data class="flex flex-col justify-between min-h-screen font-sans antialiased max-w-screen overflow-x-hidden"
          style="font-family: Serif,serif">
 
-        <x-guest.header x-ref="header"/>
+        <x-landing.header x-ref="header"/>
 
         <div
                 {{ $attributes->merge(['class' => 'flex-grow']) }}
@@ -12,6 +12,6 @@
             {{ $slot }}
         </div>
 
-        <x-guest.footer/>
+        <x-landing.footer/>
     </div>
 @endsection
