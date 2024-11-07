@@ -37,7 +37,7 @@
 
     </div>
 
-    <img src="storage/{{ $service->image->path }}"
+    <img src="storage/{{ $service->image?->path }}"
          alt="{{ str($service->name)->slug() }}"
          class="md:max-w-sm lg:max-w-lg  h-max image-with-border"
     >
