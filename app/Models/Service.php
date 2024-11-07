@@ -46,7 +46,7 @@ class Service extends Model
                 $url = data_get($c, 'url');
             }
 
-            return $url ?? $this->image->url;
+            return $url ?? $this->image?->url;
         })->shouldCache();
     }
 
