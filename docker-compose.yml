@@ -2,10 +2,6 @@ services:
     php:
         image: ethanabrace/deboerbuilding-php
         user: '${USER_ID}:${GROUP_ID}'
-        volumes:
-            - './:/var/www/html'
-            - '~/.ssh:/var/www/.ssh'
-            - '$HOME:$HOME'
         build:
             context: .
             target: php
@@ -24,6 +20,11 @@ services:
         restart: always
         environment:
             SERVICE: php
+        volumes:
+            - './:/var/www/html'
+            - '~/.ssh:/var/www/.ssh'
+            - '$HOME:$HOME'
+        labels: {  }
     nginx:
         image: deboerbuilding-local-nginx
         container_name: '${COMPOSE_DOMAIN}'

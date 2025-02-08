@@ -42,10 +42,11 @@ class ServiceResource extends Resource
                 TextInput::make('slug'),
                 Forms\Components\RichEditor::make('description')->columnSpanFull(),
                 Forms\Components\RichEditor::make('short_description')->columnSpanFull(),
-//                Forms\Components\FileUpload::make('image')->image()->columnSpanFull()
+
                 CuratorPicker::make('images')
                     ->buttonLabel('Attach Images')
                     ->relationship('images', 'name')
+                    ->orderColumn('order')
                     ->multiple(),
 
             ])->columnSpan(2)->columns(2),

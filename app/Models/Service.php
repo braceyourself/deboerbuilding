@@ -25,7 +25,7 @@ class Service extends Model
 
     public function images()
     {
-        return $this->morphMany(MediaItem::class, 'mediable');
+        return $this->morphMany(MediaItem::class, 'mediable')->orderBy('order');
     }
 
 

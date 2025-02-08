@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <x-button href="/services/{{ $service->id }}" class="text-center">
+        <x-button href="{{ route('services.show', $service) }}" class="text-center">
             Details
         </x-button>
 
@@ -39,6 +39,7 @@
 
     <img src="storage/{{ $service->image?->path }}"
          alt="{{ str($service->name)->slug() }}"
+         style="object-fit: cover"
          class="md:max-w-sm lg:max-w-lg  h-max image-with-border"
     >
 

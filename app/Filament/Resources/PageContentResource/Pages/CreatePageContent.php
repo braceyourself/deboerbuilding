@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\PageContentResource\Pages;
 
-use App\Filament\Resources\AboutResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\PageContentResource;

@@ -10,6 +10,7 @@ use Filament\Facades\Filament;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Livewire\Attributes\Computed;
 use Filament\Forms\Components\Toggle;
 use Illuminate\Support\Facades\Route;
 use Filament\Forms\Components\Select;
@@ -19,7 +20,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\MarkdownEditor;
-use App\Filament\Resources\AboutResource\Pages;
+use App\Filament\Resources\PageContentResource\Pages;
+use App\Filament\Resources\PageContentResource\Pages\CreatePageContent;
 use function Laravel\Prompts\outro;
 
 class PageContentResource extends Resource
@@ -48,13 +50,29 @@ class PageContentResource extends Resource
             ->schema([
                 Select::make('page')
                     ->createOptionForm([
-                        TextInput::make('page')
+                        TextInput::make('page')->autofocus()
                     ])
-                    ->createOptionUsing(function (Select $component, $data) {
-                        dd($component->options->push($data['page']));
+                    ->live()
+                    ->searchable()
+                    ->preload()
+                    ->getSearchResultsUsing(function (string $search) {
+                        return PageContent::query()
+                            ->where('page', 'like', "%{$search}%")
+                            ->pluck('page', 'page');
+                    })
+                    ->createOptionUsing(function (Select $component, $data, $set) {
+                        $page = PageContent::create([
+                            'page' => $data['page'],
+                            'title' => str($data['page'])->headline(),
+                            'slug' => str($data['page'])->slug(),
+                            'content' => '',
+                        ]);
+
+                        $set('page', $page->page);
                     })
                     ->columnSpanFull()
                     ->options(static::pageOptions()),
+
                 TextInput::make('title')->extraAlpineAttributes([
                     '@input' => 'slug = slugify($event.target.value)',
                 ]),
@@ -100,13 +118,13 @@ class PageContentResource extends Resource
     {
         return [
             'index'  => Pages\ListPageContent::route('/'),
-            'create' => Pages\CreatePageContent::route('/create'),
+            'create' => CreatePageContent::route('/create'),
             'edit'   => Pages\EditPageContent::route('/{record}/edit'),
         ];
     }
 
     private static function pageOptions()
     {
-        return PageContent::query()->cache()->select('page')->distinct()->pluck('page', 'page');
+        return PageContent::query()->select('page')->distinct()->pluck('page', 'page');
     }
 }

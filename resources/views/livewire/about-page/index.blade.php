@@ -27,6 +27,7 @@
                                  class="object-cover shadow-none lg:shadow-xl rounded-xl
                                         ease-in-out duration-300
                                         lg:border-none border border-primary
+                                        w-full
                                         "
                                  :class="{
                                     'lg:translate-y-4 lg:-translate-x-4': hovering,

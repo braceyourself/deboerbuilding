@@ -7950,12 +7950,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/braceyourself/compose.git",
-                "reference": "0f7404dc7e2d6a51e3fdb39a025c3519bbd9e691"
+                "reference": "ecfc288d14c7c23d4e50aa725aa5135868133f65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/braceyourself/compose/zipball/0f7404dc7e2d6a51e3fdb39a025c3519bbd9e691",
-                "reference": "0f7404dc7e2d6a51e3fdb39a025c3519bbd9e691",
+                "url": "https://api.github.com/repos/braceyourself/compose/zipball/ecfc288d14c7c23d4e50aa725aa5135868133f65",
+                "reference": "ecfc288d14c7c23d4e50aa725aa5135868133f65",
                 "shasum": ""
             },
             "require": {
@@ -8004,7 +8004,7 @@
                 "source": "https://github.com/braceyourself/compose/tree/main",
                 "issues": "https://github.com/braceyourself/compose/issues"
             },
-            "time": "2024-09-13T13:21:38+00:00"
+            "time": "2024-11-26T16:43:12+00:00"
         },
         {
             "name": "composer/class-map-generator",

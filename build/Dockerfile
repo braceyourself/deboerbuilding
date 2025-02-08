@@ -22,6 +22,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
 
 USER www-data
 
+
+
 COPY composer.json composer.lock ./
 
 RUN composer install --no-dev --no-interaction --no-progress --no-scripts
@@ -46,6 +48,10 @@ ARG VITE_PUSHER_PORT_SECURE
 ARG VITE_PUSHER_SCHEME
 ARG VITE_PUSHER_APP_CLUSTER
 ARG VITE_PUSHER_APP_HOST
+ARG VITE_REVERB_APP_KEY
+ARG VITE_REVERB_HOST
+ARG VITE_REVERB_PORT
+ARG VITE_REVERB_SCHEME
 
 # set node user and group id
 RUN groupmod -og 1000 node \
