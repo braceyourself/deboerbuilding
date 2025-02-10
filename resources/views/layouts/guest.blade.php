@@ -10,6 +10,7 @@
 
     <title>@yield('title', 'DeBoer Building LLC')</title>
 
+    <x-theme-variables />
     {{--    @livewireStyles--}}
     @filamentStyles
     @vite('resources/css/app.css')

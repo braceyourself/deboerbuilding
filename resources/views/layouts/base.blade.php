@@ -10,23 +10,7 @@
 
     <title>DeBoer Building LLC</title>
 
-    <style>
-        :root {
-            @foreach(\App\Models\Setting::whereName('theme')->first()?->value ?? [] as $color => $theme)
-                @if($colors = data_get($theme, 'colors'))
-                    --{{ $color }}: {{ data_get($theme, 'seed.hex.value') }};
-            @foreach(collect($colors)->reverse()->values()->mapWithKeys(fn($d, $k) => [($k + 1) * 100 => $d]) as $shade => $data)
-                @php
-                    if($shade > 900){
-                        $shade = 950;
-                    }
-                @endphp
---{{ $color }}-{{ $shade }}: {{ data_get($data, 'hex.value') }};
-                    @endforeach
-                @endif
-            @endforeach
-        }
-    </style>
+    <x-theme-variables />
 
     @vite('resources/css/app.css')
     @livewireStyles

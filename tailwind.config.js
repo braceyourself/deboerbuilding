@@ -4,7 +4,6 @@ import flowbite from 'flowbite/plugin'
 export default {
     darkMode: 'class',
     content: [
-        './vendor/awcodes/palette/resources/views/**/*.blade.php',
         './node_modules/flowbite/**/*.js',
         './app/Filament/**/*.php',
         './resources/views/filament/**/*.blade.php',

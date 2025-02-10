@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.2",
         "awcodes/filament-curator": "^3.6",
+        "dotswan/filament-grapesjs-v3": "^1.0",
         "filament/filament": "^3.2",
         "laragear/cache-query": "^4.0",
         "laravel/framework": "^11.9",

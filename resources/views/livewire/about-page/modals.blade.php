@@ -32,7 +32,7 @@
 {{--        job opportunities--}}
         <x-filament::modal id="job-opportunities" width="5xl" sticky-footer sticky-header class="mt-20">
             <x-slot name="trigger">
-                <x-filament::button class="bg-primary-500 min-w-full">
+                <x-filament::button class="bg-primary min-w-full">
                     Job Opportunities
                 </x-filament::button>
             </x-slot>

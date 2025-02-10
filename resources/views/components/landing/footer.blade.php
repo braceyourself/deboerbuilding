@@ -1,4 +1,4 @@
-<footer class="bg-primary-500 text-white py-12 flex flex-col text-center md:text-left">
+<footer class="bg-primary-500 py-12 flex flex-col text-center md:text-left">
 
     <div class="flex flex-col md:flex-row-reverse justify-around my-10 px-10 gap-10 container m-auto">
 
@@ -7,7 +7,7 @@
             <ul>
                 @foreach(\App\Models\Service::inFooter()->get() as $service)
                     <li>
-                        <a href="{{ route('services.show', $service) }}" class="text-white">{{ $service->footer_text ?? $service->name }}</a>
+                        <a href="{{ route('services.show', $service) }}">{{ $service->footer_text ?? $service->name }}</a>
                     </li>
                 @endforeach
             </ul>
