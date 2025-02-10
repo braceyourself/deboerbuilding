@@ -4,7 +4,7 @@
 
 @php
     $attributes = $attributes->merge([
-        'class' => 'inline-block bg-primary text-white py-2 px-3 rounded hover:bg-secondary  font-bold'
+        'class' => 'inline-block bg-primary-500 text-white py-2 px-3 rounded hover:bg-secondary  font-bold'
     ]);
 @endphp
 
