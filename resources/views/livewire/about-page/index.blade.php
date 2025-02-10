@@ -1,4 +1,4 @@
-<div class="text-black dart:text-white">
+<div class="text-black dart:text-white max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row gap-10 justify-around my-10 md:my-48 max-w-4xl mx-auto md:px-10">
         <img class="h-fit w-fit self-center" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}" alt="DeBoer Building LLC" />
         <div class="m-auto px-4 md:px-10 text-md md:text-3xl text-center max-w-96 md:max-w-[90%]">
@@ -28,6 +28,7 @@
                                         ease-in-out duration-300
                                         lg:border-none border border-primary
                                         w-full
+                                        max-h-100
                                         "
                                  :class="{
                                     'lg:translate-y-4 lg:-translate-x-4': hovering,

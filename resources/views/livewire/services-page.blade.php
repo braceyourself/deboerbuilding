@@ -1,4 +1,4 @@
-<div class="container m-auto p-5 md:p-10 text-lg flex flex-col gap-20">
+<div class="container m-auto p-5 md:p-10 text-lg flex flex-col gap-20 max-w-7xl">
 
     <div class="flex flex-col-reverse xl:flex-row gap-10 justify-around py-32 lg:px-10">
 

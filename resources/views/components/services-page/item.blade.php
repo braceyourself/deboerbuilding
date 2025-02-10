@@ -40,7 +40,7 @@
     <img src="/storage/{{ $service->image?->path }}"
          alt="{{ str($service->name)->slug() }}"
          style="object-fit: cover"
-         class="md:max-w-sm lg:max-w-lg  h-max image-with-border"
+         class="md:max-w-sm lg:max-w-lg h-max image-with-border"
     >
 
 </div>
