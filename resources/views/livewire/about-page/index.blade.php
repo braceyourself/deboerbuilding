@@ -1,8 +1,8 @@
-<div>
+<div class="text-black dart:text-white">
     <div class="flex flex-col md:flex-row gap-10 justify-around my-10 md:my-48 max-w-4xl mx-auto md:px-10">
         <img class="h-fit w-fit self-center" src="{{ \Illuminate\Support\Facades\Vite::asset('resources/images/logo.png') }}" alt="DeBoer Building LLC" />
-        <div class="m-auto px-4 md:px-10 text-md md:text-3xl text-center">
-            Our goal at DeBoer Building is to use the talents God has given us to improve homes while building lasting relationships of trust and respect with all the people we come in contact with. We seek to give each customer an enjoyable remodeling experience by giving personal attention, value and quality that meets and exceeds their expectations.
+        <div class="m-auto px-4 md:px-10 text-md md:text-3xl text-center max-w-96 md:max-w-[90%]">
+            {{ \App\Models\PageContent::whereSlug('about')->first()?->content }}
         </div>
     </div>
 
@@ -41,7 +41,7 @@
 
 
                     <div @class([
-                        'text-white text-center',
+                        'text-center',
                         'max-w-md sm:max-w-2xl ',
                         'lg:px-0 lg:py-20',
                         'mx-auto lg:mx-0',

@@ -3,3 +3,19 @@
 @import "/vendor/awcodes/filament-curator/resources/dist/curator.css";
 
 @config 'tailwind.config.js';
+
+.fi-form-actions{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: white;
+    box-shadow: 0px -10px 50px 0px #a2a2a2;
+    justify-items: end;
+
+}
+
+.fi-form{
+    margin-bottom: 100px;
+}

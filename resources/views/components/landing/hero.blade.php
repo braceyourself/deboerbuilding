@@ -27,10 +27,10 @@
     <div class="container mx-auto h-full flex justify-center items-center">
         <div class="text-center">
             <h1 class="text-xl md:text-5xl font-bold" style="text-shadow: 3px 0 7px black;">
-                Transforming Your Home into Your Dream Space
+                {{ \App\Models\PageContent::whereSlug('headline')->first()?->content }}
             </h1>
             <p class="mt-4 md:text-lg">
-                Specializing in custom home remodeling
+                {{ \App\Models\PageContent::whereSlug('tagline')->first()?->content }}
             </p>
 
             <x-button href="/contact" class="mt-6">

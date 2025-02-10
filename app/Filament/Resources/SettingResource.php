@@ -26,7 +26,8 @@ class SettingResource extends Resource
 {
     protected static ?string $model = Setting::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-c-cog-6-tooth';
+    protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form
     {
@@ -90,7 +91,7 @@ class SettingResource extends Resource
                             }),
 
                         Placeholder::make("{$color}.image.bare")
-                            ->label("Scheme")
+                            ->label("Shades")
                             ->visible(fn($get) => $get("{$color}.seed.hex.clean"))
                             ->content(fn($state, $get): HtmlString => new HtmlString("<img src='https://www.thecolorapi.com/scheme?format=svg&named=false&hex={$get("{$color}.seed.hex.clean")}&mode=monochrome&count=10' />"))
                             ->dehydrated(false)
