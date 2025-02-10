@@ -8,18 +8,39 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 
-    <title>DeBoer Building LLC</title>
+    <title>@yield('title', 'DeBoer Building LLC')</title>
+
+
+    @livewireStyles
+    @filamentStyles
+    @vite('resources/css/app.css')
 
     <x-theme-variables />
-
-    @vite('resources/css/app.css')
-    @livewireStyles
 </head>
+
 <body class="bg-gray-100 font-sans flex flex-col">
 
-@yield('content')
+<div x-data class="flex flex-col justify-between min-h-screen font-sans antialiased max-w-screen overflow-x-hidden"
+     style="font-family: Serif,serif">
 
-@vite('resources/js/app.js')
+    <x-landing.header x-ref="header" class="z-10"/>
+
+    <div {{ $attributes->merge(['class' => 'flex-grow']) }}
+         :style="{marginTop: $refs.header.clientHeight + 'px'}"
+    >
+        @isset($slot)
+            {{ $slot }}
+        @else
+            @yield('content')
+        @endisset
+    </div>
+
+    <x-landing.footer/>
+</div>
+
 @livewireScripts
+@filamentScripts
+@vite('resources/js/app.js')
 </body>
+
 </html>

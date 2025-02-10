@@ -8,6 +8,6 @@ class ServicesPage extends Component
 {
     public function render()
     {
-        return view('livewire.services-page')->extends('layouts.guest');
+        return view('livewire.services-page');
     }
 }

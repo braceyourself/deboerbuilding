@@ -51,6 +51,6 @@ class AboutPage extends Component implements HasForms, HasActions
 
     public function render()
     {
-        return view('livewire.about-page.index')->extends('layouts.guest');
+        return view('livewire.about-page.index');
     }
 }

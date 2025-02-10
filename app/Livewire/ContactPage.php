@@ -45,6 +45,6 @@ class ContactPage extends Component implements HasForms
 
     public function render()
     {
-        return view('livewire.contact-page')->extends('layouts.guest');
+        return view('livewire.contact-page');
     }
 }

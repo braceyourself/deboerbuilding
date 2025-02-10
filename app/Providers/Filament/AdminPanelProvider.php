@@ -11,6 +11,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\AssetResource;
 use Filament\Http\Middleware\Authenticate;
+use Dotswan\FilamentGrapesjs\Fields\GrapesJs;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
@@ -32,6 +33,10 @@ class AdminPanelProvider extends PanelProvider
     {
         Select::configureUsing(function (Select $component) {
             $component->native(false)->preload();
+        });
+
+        GrapesJs::configureUsing(function ($component) {
+            $component->visible(auth()->user()->isDev());
         });
     }
 

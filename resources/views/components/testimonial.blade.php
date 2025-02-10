@@ -17,6 +17,7 @@
             <p class="text-sm font-semibold text-gray-800">{{ $testimonial->client->name }}</p>
         </div>
     </div>
+
 </div>
 
 

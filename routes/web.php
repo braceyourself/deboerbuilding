@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Livewire\ContactPage;
 use App\Livewire\HistoryPage;
@@ -21,3 +22,11 @@ Route::get('services', ServicesPage::class)->name('services');
 Route::resource('services', ServiceController::class)->only('show')->parameters(['services' => 'service:slug']);
 
 Route::redirect('/login', '/admin/login')->name('login');
+
+/*
+Page::query()->each(function (Page $page) {
+    Route::get($page->slug ?? '/', function () use ($page) {
+        return view('dynamic-page', compact('page'));
+    });
+});
+*/
