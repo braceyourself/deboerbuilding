@@ -7,7 +7,6 @@
 
         init(){
             this.primary = this.images[0];
-            this.selected = this.images[0];
         },
 
         // this function should return the image src of the previous image in the array

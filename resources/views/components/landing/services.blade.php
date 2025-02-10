@@ -37,7 +37,7 @@
                 <div x-ref="content" class="flex flex-col gap-2">
                     <span x-text="selected.name" class="text-amber-950 text-lg md:text-2xl"></span>
                     <span x-html="selected.short_description"></span>
-                    <x-button href ::href="'/services/'+selected.id">Details</x-button>
+                    <x-button href ::href="selected.url">Details</x-button>
                 </div>
             </div>
             <img :src="selected.image_url" @class([

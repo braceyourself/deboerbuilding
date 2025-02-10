@@ -13,7 +13,7 @@ class Service extends Model
     use HasFactory;
 
     protected $with = ['image'];
-    protected $appends = ['image_url'];
+    protected $appends = ['image_url', 'url'];
 
     /**********************************************
      * relations
@@ -49,6 +49,17 @@ class Service extends Model
             return $url ?? $this->image?->url;
         })->shouldCache();
     }
+
+    /**
+     * Accessor for $this->url
+     */
+    public function url(): Attribute
+    {
+        return Attribute::get(function () {
+            return route('services.show', $this);
+        })->shouldCache();
+    }
+
 
 
     /**********************************************
