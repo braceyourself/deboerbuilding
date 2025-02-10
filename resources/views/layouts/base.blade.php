@@ -12,7 +12,7 @@
 
     <style>
         :root {
-            @foreach(\App\Models\Setting::whereName('theme')->first()->value as $color => $theme)
+            @foreach(\App\Models\Setting::whereName('theme')->first()?->value ?? [] as $color => $theme)
                 @if($colors = data_get($theme, 'colors'))
                     --{{ $color }}: {{ data_get($theme, 'seed.hex.value') }};
                     @foreach($colors as $i => $data)
