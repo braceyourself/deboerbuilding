@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "mateusjunges/laravel-invite-codes": "^2.0",
+        "sentry/sentry-laravel": "^4.13",
         "spatie/eloquent-sortable": "^4.4"
     },
     "repositories": [
