@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
+use Illuminate\Support\HtmlString;
 use Filament\Support\Enums\MaxWidth;
 use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\ServiceResource\Pages;
@@ -70,6 +71,7 @@ class ServiceResource extends Resource
                     ->visible(fn($get) => $get('show_in_footer') && $get('enabled')),
 
                 CuratorPicker::make('image_id')
+                    ->helperText(new HtmlString('The primary image for this service. <br> Shown on the "services" and the "home" pages.'))
                     ->relationship('image', 'name')
                     ->label('Card Image')
                     ->buttonLabel('Attach')
