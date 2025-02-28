@@ -12,5 +12,5 @@ export default {
         './vendor/filament/**/*.blade.php',
         './vendor/awcodes/filament-curator/resources/**/*.blade.php',
     ],
-    theme:  app.theme
+    // theme:  app.theme
 }
