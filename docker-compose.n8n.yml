@@ -1,0 +1,52 @@
+volumes:
+  n8n_data:
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: always
+    environment:
+      - N8N_HOST=n8n.${COMPOSE_DOMAIN}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://n8n.${COMPOSE_DOMAIN}/
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+  n8n-web-local:
+    image: ethanabrace/nginx:n8n
+    restart: always
+    container_name: n8n.${COMPOSE_DOMAIN}
+    environment:
+      PROXY_PASS: n8n
+      PROXY_PASS_PORT: 5678
+    networks:
+      - default
+      - traefik
+    profiles:
+      - local
+
+  n8n-web:
+    image: ethanabrace/nginx:n8n
+    restart: always
+    container_name: n8n.${COMPOSE_DOMAIN}
+    environment:
+      PROXY_PASS: n8n
+      PROXY_PASS_PORT: 5678
+    labels:
+      - traefik.http.routers.n8n-${COMPOSE_ROUTER}.tls=true
+      - traefik.http.routers.n8n-${COMPOSE_ROUTER}.tls.certresolver=resolver
+    networks:
+      - default
+      - traefik
+    profiles:
+      - production
+
+networks:
+  traefik:
+    external: true
+    name: '${COMPOSE_NETWORK}'
