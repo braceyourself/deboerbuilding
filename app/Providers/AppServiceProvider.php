@@ -6,10 +6,13 @@ use Illuminate\Support\Stringable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Log;
+use Filament\Support\Enums\Alignment;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\Component;
 use Filament\Notifications\Notification;
+use Filament\Support\Enums\VerticalAlignment;
+use Filament\Notifications\Livewire\Notifications;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,6 +55,10 @@ class AppServiceProvider extends ServiceProvider
                 );
             });
         }
+
+
+        Notifications::alignment(Alignment::Center);
+        Notifications::verticalAlignment(VerticalAlignment::End);
 
         Model::unguard();
 
