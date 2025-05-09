@@ -6,6 +6,7 @@ export default {
     content: [
         './node_modules/flowbite/**/*.js',
         './app/Filament/**/*.php',
+        './app/Livewire/**/*.php',
         './resources/views/filament/**/*.blade.php',
         './resources/**/*.blade.php',
         './resources/views/livewire/**/*.blade.php',

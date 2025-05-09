@@ -4,8 +4,17 @@
 
     <div class="flex flex-col lg:flex-row justify-between gap-5 px-10">
 
-        <div class="w-full ">
-            {{ $this->form }}
+        <div class="w-full">
+
+            <form wire:submit="submitForm">
+                {{ $this->form }}
+
+                <x-button type="submit" class="mt-4 !bg-black !text-white">
+                    Submit
+                </x-button>
+
+            </form>
+
         </div>
 
         <div class="lg:max-w-prose m-auto">

@@ -12,9 +12,6 @@
             backgroundImage: null
         },
         init(){
-{{--            linear-gradient(0deg, rgb(143 143 143 / 30%), rgb(0 0 0 / 30%)) 0% 0% / cover, url(http://db.localhost/storage/media/ded0bae1-c720-4643-99dd-9c0b15fef155.jpg)--}}
-
-{{--      background:linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)), url(https://picsum.photos/id/1043/800/600);--}}
             this.style.background = `linear-gradient(0deg, rgb(143 143 143 / 30%), rgb(0 0 0 / 30%)) 0% 0% / cover,  url(${this.images[Math.floor(Math.random() * this.images.length)]})`
             this.style.backgroundSize = `cover`;
             this.style.backgroundPosition = `center`;
@@ -26,9 +23,11 @@
 
     <div class="container mx-auto h-full flex justify-center items-center">
         <div class="text-center">
+
             <h1 class="text-xl md:text-5xl font-bold" style="text-shadow: 3px 0 7px black;">
                 {{ \App\Models\PageContent::whereSlug('headline')->first()?->content }}
             </h1>
+
             <p class="mt-4 md:text-lg">
                 {{ \App\Models\PageContent::whereSlug('tagline')->first()?->content }}
             </p>

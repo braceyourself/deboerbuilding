@@ -24,7 +24,7 @@ class MediaWebhookController extends Controller
         $ext = $file->getClientOriginalExtension();
         $path = $file->storePubliclyAs('media', "{$filename}.{$ext}", 'public');
 
-        return Media::create([
+        $model = Media::create([
             'disk' => 'public',
             'directory' => 'media',
             'visibility' => 'public',
@@ -37,5 +37,9 @@ class MediaWebhookController extends Controller
             'type' => $file->getMimeType(),
             'ext' => $ext,
         ]);
+
+        return response()->json(
+            $model->fresh()
+        );
     }
 }

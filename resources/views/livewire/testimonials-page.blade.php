@@ -10,7 +10,7 @@
         </div>
     </section>
 
-    <div x-data x-intersect.margin.500px="$wire.loadMore()" class="p-4">
+    <div x-data x-intersect.margin.500px="$wire.loadMore()" class="p-4 justify-center">
         <div wire:loading wire:target="loadMore"
              class="loading-indicator">
             Loading more posts...
