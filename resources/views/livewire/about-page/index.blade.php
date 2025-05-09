@@ -25,7 +25,7 @@
                  data-aos="{{ $flip ? 'fade-right' : 'fade-left' }}"
             >
                 <div class="h-full w-full flex justify-center shadow rounded-xl lg:border border-primary" >
-                    <img src="/storage/{{ $item['image'] }}"
+                    <img src="{{ Storage::disk('public')->url($item['image']) }}"
                          class="object-cover shadow-none lg:shadow-xl rounded-xl
                                         ease-in-out duration-300
                                         lg:border-none border border-primary
