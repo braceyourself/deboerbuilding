@@ -38,7 +38,7 @@ return [
     'n8n' => [
         'username' => env('N8N_API_USERNAME'),
         'password' => env('N8N_API_PASSWORD'),
-        'baseUrl' => 'http://n8n.db.braceyourself.solutions/webhook',
+        'baseUrl' => 'https://n8n.braceyourself.solutions/webhook/deboerbuilding',
     ]
 
 ];

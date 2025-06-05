@@ -36,6 +36,10 @@ class AppServiceProvider extends ServiceProvider
 
             return $this;
         });
+
+        $this->app->bind('n8n', function () {
+            return new \App\Http\Clients\N8N\Request();
+        });
     }
 
     /**
@@ -69,6 +73,8 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             URL::forceScheme('https');
         }
+
+
 
     }
 }
