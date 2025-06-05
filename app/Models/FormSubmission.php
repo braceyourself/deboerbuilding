@@ -16,8 +16,7 @@ class FormSubmission extends Model
     {
         static::created(function (FormSubmission $submission) {
             $res = N8N::post('form-submission', [
-                'form' => $submission->form,
-                'Form Submission' => $submission->data,
+                $submission->form .' Form Submission' => $submission->data,
                 'Received At' => $submission->created_at->format(Carbon::RFC850),
             ]);
         });
