@@ -10,6 +10,9 @@
                 {{ $this->form }}
 
                 <x-button type="submit" class="mt-4 !bg-black !text-white">
+{{--                    spinner--}}
+                    <x-filament::loading-indicator class="inline-block w-5 h-5 mr-2" wire:loading wire:target="submitForm" />
+
                     Submit
                 </x-button>
 
